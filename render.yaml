@@ -2,7 +2,7 @@ services:
   - type: web
     name: f1-planner
     runtime: php
-    buildCommand: echo "Build complete"
+    buildCommand: echo Build complete
     startCommand: php -S 0.0.0.0:$PORT -t . router.php
     envVars:
       - key: DB_HOST
