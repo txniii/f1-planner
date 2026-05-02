@@ -4,7 +4,7 @@ require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/auth.php';
 
-$db = getDB();
+$db = getDatabaseConnection();
 
 // Build query with optional filters
 $search  = trim($_GET['search'] ?? '');
