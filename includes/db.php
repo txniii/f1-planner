@@ -1,5 +1,9 @@
 <?php
 
+function getDB() {
+    return getDatabaseConnection();
+}
+
 function getDatabaseConnection() {
     $host = getenv('DB_HOST');
     $port = getenv('DB_PORT') ?: '3306';
