@@ -2,7 +2,7 @@
 -- Run this file once to set up your database
 
 CREATE DATABASE IF NOT EXISTS f1_planner CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE f1_planner;
+USE mb963;
 
 -- Users table
 CREATE TABLE IF NOT EXISTS users (
