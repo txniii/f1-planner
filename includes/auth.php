@@ -36,8 +36,13 @@ function loginUser($email, $password) {
         $stmt = $db->prepare('SELECT id, password_hash FROM users WHERE email = ?');
         $stmt->execute([$email]);
         $user = $stmt->fetch();
-        
-        if ($user && password_verify($password, $user['password_hash'])) {
+
+// DEBUG: show what we got (remove after testing)
+if (!$user) {
+    die('No user found for email: ' . htmlspecialchars($email));
+}
+
+if ($user && password_verify($password, $user['password_hash'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $email;
             return true;
