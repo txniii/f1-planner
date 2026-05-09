@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/auth.php';
+
 startSession();
 $user = getCurrentUser();
 ?>
@@ -25,14 +26,15 @@ $user = getCurrentUser();
                 <li><a href="/dashboard.php">Dashboard</a></li>
                 <li><a href="/races.php">Races</a></li>
                 <li><a href="/pages/favorites.php">My Favorites</a></li>
-                <li><a href="/pages/watchlist.php">My Planner</a></li>
-                <?php if ($user && $user['role'] === 'admin'): ?>
+                <!-- Remove or change this if you deleted watchlist.php -->
+                <!-- <li><a href="/pages/watchlist.php">My Planner</a></li> -->
+                <?php if ($user && ($user['role'] ?? null) === 'admin'): ?>
                     <li><a href="/pages/admin-assign-races.php">Assign Races</a></li>
                     <li><a href="/pages/admin-unassigned-races.php">Unassigned</a></li>
                     <li><a href="/pages/admin-all-associations.php">All Associations</a></li>
                 <?php endif; ?>
                 <li class="nav-user">
-                    <span>👤 <?= htmlspecialchars($user['username']) ?></span>
+                    <span>👤 <?= htmlspecialchars($user['username'] ?? 'User') ?></span>
                     <a href="/logout.php" class="btn btn-sm">Logout</a>
                 </li>
             <?php else: ?>
