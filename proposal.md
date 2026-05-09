@@ -55,9 +55,9 @@ A web application that helps Formula 1 fans browse the 2025 F1 season, open a sp
 
 ## Demo
 
-**Video Link:** [Add YouTube link here after recording]
+**Video Link:** (https://youtu.be/yPdN47baGyk)
 
-**Production URL:** [Add your Render.com URL here]
+**Production URL:** (https://f1-planner.onrender.com/index.php)
 
 **Admin credentials for demo:**
 - Email: admin@f1planner.com
