@@ -212,9 +212,13 @@ INSERT INTO sessions (race_id, session_name, session_datetime) VALUES
 (24,'Practice 3','2025-12-06 09:30:00'),(24,'Qualifying','2025-12-06 13:00:00'),
 (24,'Race','2025-12-07 13:00:00');
 
--- Default admin user (password: admin123)
-INSERT INTO users (username, email, password_hash, role) VALUES
-('admin', 'admin@f1planner.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
+SELECT id, username, email, password_hash, role
+FROM users
+WHERE email = 'admin@f1planner.com';
+
+UPDATE users
+SET password_hash = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+WHERE email = 'admin@f1planner.com';
 
 -- Extra table: user_races (for planner-style associations)
 CREATE TABLE IF NOT EXISTS user_races (
