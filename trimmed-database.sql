@@ -95,9 +95,6 @@ INSERT INTO sessions (race_id, session_name, session_datetime) VALUES
 (1,'Race','2025-03-16 04:00:00'),
 -- [ALL remaining INSERTs for sessions... full content matches original from line after USE mb963; ]
 
--- Default admin user (password: admin123)
-INSERT INTO users (username, email, password_hash, role) VALUES
-('admin', 'admin@f1planner.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
 
 -- Extra table: user_races (for planner-style associations)
 CREATE TABLE IF NOT EXISTS user_races (
@@ -112,12 +109,3 @@ CREATE TABLE IF NOT EXISTS user_races (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (race_id) REFERENCES races(id) ON DELETE CASCADE
 );
-
-SELECT id, username, email, password_hash, role
-FROM users
-WHERE email = 'admin@f1planner.com';
-
-UPDATE users
-SET password_hash = '$2y$10$4l0g7o9M5cQpZ5p4Xw9iZOE0kqQ5oF8cIY7lY8Qw0Yx2Zt4hT6Qe'
-WHERE email = 'admin@f1planner.com';
-
