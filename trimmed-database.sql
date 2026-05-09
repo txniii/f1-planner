@@ -118,5 +118,6 @@ FROM users
 WHERE email = 'admin@f1planner.com';
 
 UPDATE users
-SET password_hash = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+SET password_hash = '$2y$10$4l0g7o9M5cQpZ5p4Xw9iZOE0kqQ5oF8cIY7lY8Qw0Yx2Zt4hT6Qe'
 WHERE email = 'admin@f1planner.com';
+
