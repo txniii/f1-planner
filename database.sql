@@ -215,3 +215,17 @@ INSERT INTO sessions (race_id, session_name, session_datetime) VALUES
 -- Default admin user (password: admin123)
 INSERT INTO users (username, email, password_hash, role) VALUES
 ('admin', 'admin@f1planner.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
+
+-- Extra table: user_races (for planner-style associations)
+CREATE TABLE IF NOT EXISTS user_races (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    race_id INT NOT NULL,
+    is_favorite TINYINT(1) NOT NULL DEFAULT 0,
+    note_text VARCHAR(500) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_user_race (user_id, race_id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (race_id) REFERENCES races(id) ON DELETE CASCADE
+);
