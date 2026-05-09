@@ -33,6 +33,7 @@ $user = getCurrentUser();
     <li><a href="/pages/admin-races.php">Manage Races</a></li>
     <li><a href="/pages/admin-sessions.php">Manage Sessions</a></li>
     <li><a href="/pages/admin-assign-races.php">Assign Races</a></li>
+    <li><a href="/pages/admin-users.php">Manage Users</a></li>
     <li><a href="/pages/admin-unassigned-races.php">Unassigned</a></li>
     <li><a href="/pages/admin-all-associations.php">All Associations</a></li>
 <?php endif; ?>
