@@ -32,18 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_session_id']))
 
 // Handle update session
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_session_id'])) {
-    $id              = (int)$_POST['update_session_id'];
-    $sessionType     = trim($_POST['session_type'] ?? '');
-    $sessionStartUtc = $_POST['session_start_utc'] ?? '';
-    $raceId          = (int)($_POST['race_id'] ?? 0);
+    $id            = (int)$_POST['update_session_id'];
+    $sessionType   = trim($_POST['session_type'] ?? '');
+    $startTimeUtc  = $_POST['start_time_utc'] ?? '';
+    $raceId        = (int)($_POST['race_id'] ?? 0);
 
-    if ($id && $raceId && $sessionType && $sessionStartUtc) {
+    if ($id && $raceId && $sessionType && $startTimeUtc) {
         $stmt = $db->prepare(
             'UPDATE sessions
-             SET session_type = ?, session_start_utc = ?
+             SET session_type = ?, start_time_utc = ?
              WHERE id = ? AND race_id = ?'
         );
-        $stmt->execute([$sessionType, $sessionStartUtc, $id, $raceId]);
+        $stmt->execute([$sessionType, $startTimeUtc, $id, $raceId]);
     }
 
     header('Location: /pages/admin-sessions.php?race_id=' . $raceId);
@@ -52,16 +52,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_session_id']))
 
 // Handle create session
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_session'])) {
-    $raceId          = (int)($_POST['race_id'] ?? 0);
-    $sessionType     = trim($_POST['session_type'] ?? '');
-    $sessionStartUtc = $_POST['session_start_utc'] ?? '';
+    $raceId       = (int)($_POST['race_id'] ?? 0);
+    $sessionType  = trim($_POST['session_type'] ?? '');
+    $startTimeUtc = $_POST['start_time_utc'] ?? '';
 
-    if ($raceId && $sessionType && $sessionStartUtc) {
+    if ($raceId && $sessionType && $startTimeUtc) {
         $stmt = $db->prepare(
-            'INSERT INTO sessions (race_id, session_type, session_start_utc)
+            'INSERT INTO sessions (race_id, session_type, start_time_utc)
              VALUES (?, ?, ?)'
         );
-        $stmt->execute([$raceId, $sessionType, $sessionStartUtc]);
+        $stmt->execute([$raceId, $sessionType, $startTimeUtc]);
     }
 
     header('Location: /pages/admin-sessions.php?race_id=' . $raceId);
@@ -79,7 +79,7 @@ if ($selectedRaceId) {
     $sessionsStmt = $db->prepare(
         'SELECT * FROM sessions
          WHERE race_id = ?
-         ORDER BY session_start_utc'
+         ORDER BY start_time_utc'
     );
     $sessionsStmt->execute([$selectedRaceId]);
     $sessions = $sessionsStmt->fetchAll();
@@ -133,7 +133,7 @@ include __DIR__ . '/../includes/header.php';
                 <label class="form-label">Session start (UTC)</label>
                 <input
                     type="datetime-local"
-                    name="session_start_utc"
+                    name="start_time_utc"
                     class="form-input"
                     required
                 >
@@ -181,9 +181,9 @@ include __DIR__ . '/../includes/header.php';
                             <td>
                                 <input
                                     type="datetime-local"
-                                    name="session_start_utc"
+                                    name="start_time_utc"
                                     class="form-input"
-                                    value="<?= htmlspecialchars(str_replace(' ', 'T', substr($session['session_start_utc'], 0, 16))) ?>"
+                                    value="<?= htmlspecialchars(str_replace(' ', 'T', substr($session['start_time_utc'], 0, 16))) ?>"
                                 >
                             </td>
                             <td>
