@@ -28,11 +28,14 @@ $user = getCurrentUser();
                 <li><a href="/pages/favorites.php">My Favorites</a></li>
                 <!-- Watchlist removed. Add back or change target if you want a planner page. -->
                 <!-- <li><a href="/pages/watchlist.php">My Planner</a></li> -->
+
                 <?php if ($user && ($user['role'] ?? null) === 'admin'): ?>
+                    <li><a href="/pages/admin-races.php">Manage Races</a></li>
                     <li><a href="/pages/admin-assign-races.php">Assign Races</a></li>
                     <li><a href="/pages/admin-unassigned-races.php">Unassigned</a></li>
                     <li><a href="/pages/admin-all-associations.php">All Associations</a></li>
                 <?php endif; ?>
+
                 <li class="nav-user">
                     <span>👤 <?= htmlspecialchars($user['username'] ?? 'User') ?></span>
                     <a href="/logout.php" class="btn btn-sm">Logout</a>
