@@ -109,3 +109,12 @@ CREATE TABLE IF NOT EXISTS user_races (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (race_id) REFERENCES races(id) ON DELETE CASCADE
 );
+
+CREATE TABLE sessions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    race_id INT NOT NULL,
+    session_type VARCHAR(50) NOT NULL,
+    start_time_utc DATETIME NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (race_id) REFERENCES races(id) ON DELETE CASCADE
+);
