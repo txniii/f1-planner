@@ -3,8 +3,8 @@
 ## Project Overview
 A web application that helps Formula 1 fans browse the 2025 F1 season, open a specific Grand Prix weekend, and view the full event schedule, circuit information, and manage their saved favorites and personal notes.
 
-## Team Members
-- [Your Name]
+## Creator
+- Marco Bautista
 
 ## Tech Stack
 - **Frontend:** PHP (EJS-style templating), HTML5, CSS3, JavaScript
