@@ -112,3 +112,7 @@ CREATE TABLE IF NOT EXISTS user_races (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (race_id) REFERENCES races(id) ON DELETE CASCADE
 );
+
+SELECT id, username, email, password_hash, role
+FROM users
+WHERE email = 'admin@f1planner.com';
