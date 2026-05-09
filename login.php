@@ -1,14 +1,21 @@
 <?php
 $pageTitle = 'Login — F1 Planner';
+
 require_once __DIR__ . '/includes/auth.php';
 
 startSession();
-if (isLoggedIn()) { header('Location: /index.php'); exit; }
+
+if (isLoggedIn()) {
+    header('Location: /index.php');
+    exit;
+}
 
 $error = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email    = trim($_POST['email'] ?? '');
+    $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
+
     if ($email && $password) {
         if (loginUser($email, $password)) {
             header('Location: /index.php');
@@ -26,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $pageTitle ?></title>
+    <title><?= htmlspecialchars($pageTitle) ?></title>
     <link rel="stylesheet" href="/public/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 </head>
@@ -46,13 +53,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST">
             <div class="form-group">
                 <label class="form-label">Email</label>
-                <input class="form-input" type="email" name="email" required
+                <input
+                    class="form-input"
+                    type="email"
+                    name="email"
+                    required
                     placeholder="your@email.com"
-                    value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+                    value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+                >
             </div>
             <div class="form-group">
                 <label class="form-label">Password</label>
-                <input class="form-input" type="password" name="password" required placeholder="••••••••">
+                <input
+                    class="form-input"
+                    type="password"
+                    name="password"
+                    required
+                    placeholder="••••••••"
+                >
             </div>
             <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
         </form>
