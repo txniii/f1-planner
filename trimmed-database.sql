@@ -99,10 +99,6 @@ INSERT INTO sessions (race_id, session_name, session_datetime) VALUES
 INSERT INTO users (username, email, password_hash, role) VALUES
 ('admin', 'admin@f1planner.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
 
--- Default admin user (password: admin123)
-INSERT INTO users (username, email, password_hash, role) VALUES
-('admin', 'admin@f1planner.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
-
 -- Extra table: user_races (for planner-style associations)
 CREATE TABLE IF NOT EXISTS user_races (
     id INT AUTO_INCREMENT PRIMARY KEY,
