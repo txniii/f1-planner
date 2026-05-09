@@ -26,7 +26,7 @@ $user = getCurrentUser();
                 <li><a href="/dashboard.php">Dashboard</a></li>
                 <li><a href="/races.php">Races</a></li>
                 <li><a href="/pages/favorites.php">My Favorites</a></li>
-                <!-- Remove or change this if you deleted watchlist.php -->
+                <!-- Watchlist removed. Add back or change target if you want a planner page. -->
                 <!-- <li><a href="/pages/watchlist.php">My Planner</a></li> -->
                 <?php if ($user && ($user['role'] ?? null) === 'admin'): ?>
                     <li><a href="/pages/admin-assign-races.php">Assign Races</a></li>
